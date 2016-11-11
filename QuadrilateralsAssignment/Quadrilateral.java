@@ -1,13 +1,33 @@
-
+//gotitfam
 abstract class Quadrilateral {
 	abstract int findArea();
 	abstract int findPerimeter();
 	
 }
+class Main{
+	public static void main(String[] args){
+		// create all the shit
+//		Square sq = new Square();
+//		Rectangle rt = new Rectangle();
+//		Rhombus rmb = new Rhombus();
+//		Parallelogram prl = new Parallelogram();
+//		Kite kt = new Kite();
+		Trapezoid trp = new Trapezoid();
+		System.out.println(trp.toString());
+	}
+}
+
 class Square extends Quadrilateral{
+	private static int numSquares = 0;
 	private int side1;
 	Square(){
 		side1 = 0;
+		numSquares++;
+	}
+	Square(boolean isSuper){
+		if(isSuper){
+			side1 = 0;
+		}
 	}
 	int findPerimeter() {
 		return side1*4;
@@ -22,7 +42,7 @@ class Square extends Quadrilateral{
 		this.side1 = side1;
 	}
 	public String toString(){
-
+		System.out.println();
 	}
 	public boolean equals(Object object){
 		if(){
@@ -33,6 +53,7 @@ class Square extends Quadrilateral{
 
 }
 class Rhombus extends Square{
+	private static int numRectangles = 0;
 	private int height;
 	Rhombus(){
 		height = 0;
@@ -62,7 +83,9 @@ class Rhombus extends Square{
 class Rectangle extends Square{
 	private int side2;
 	Rectangle(){
+		super(true);
 		side2 = 0;
+		
 	}
 	int findPerimeter() {
 		return (super.getSide1()+side2)*2;
@@ -159,7 +182,7 @@ class Trapezoid extends Parallelogram{
 		return super.getSide1()+super.getSide2()+getSide3()+getSide4();
 	}
 	int findArea() {
-		return (super.getSide1()+super.getSide2())/2;
+		return super.getHeight()*(super.getSide1()+super.getSide2())/2;
 	}
 	public int getSide3() {
 		return side3;
@@ -174,7 +197,8 @@ class Trapezoid extends Parallelogram{
 		this.side4 =side4;
 	}
 	public String toString(){
-		
+		return "The bases of the trapezoid are: "+ super.getSide1() +" and "+ super.getSide2()
+				+"\nThe length of the legs of the trapezoid are: "+getSide3() +" and "+ getSide4();
 	}
 	public boolean equals(Object object){
 		if(){
